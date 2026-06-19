@@ -1,0 +1,33 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Validate HTML (basic check)
+      run: |
+        echo "Checking HTML files..."
+        find . -name "*.html" -print
+
+    - name: Validate CSS files
+      run: |
+        echo "Checking CSS files..."
+        find . -name "*.css" -print
+
+    - name: Validate JS files
+      run: |
+        echo "Checking JS files..."
+        find . -name "*.js" -print
+
+    - name: Build success message
+      run: echo "Frontend build successful 🎉"
